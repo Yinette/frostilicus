@@ -162,7 +162,7 @@ def SCAN_longlinephp(fname):
 		if fname.endswith(".php"):
 			line_greater_700 = line_length(fname, 700)
 			f = open(fname, 'r')
-			for i, line in enumerate(f, 1):
+			for i, line in enumerate(f, 0):
 				pass
 			if i <= 6 and line_greater_700:
 				f.close()
