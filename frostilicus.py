@@ -170,6 +170,7 @@ def SCAN_longlinephp(fname):
 			f.close()
 	return False
 
+#Regex is severely broken!
 def SCAN_taintedfile(fname):
 	"""
 		This looks for .php files that are longer than 12 lines, and contain some known exploit keywords on a line exeeding 1000 Chr.
