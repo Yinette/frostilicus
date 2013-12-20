@@ -156,7 +156,7 @@ def SCAN_backdoors(fname):
 
 def SCAN_longlinephp(fname):
 	"""
-		This looks for .php files that are 2~6 lines long with a line that is longer than 700 Characters.
+		This looks for .php files that are 1~6 lines long with a line that is longer than 700 Characters.
 	"""
 	if not empty(fname):
 		if fname.endswith(".php"):
@@ -251,9 +251,9 @@ def main():
 				score += 5
 
 			if SCAN_longlinephp(fname) == True:
-				print fname, 'is a short lined php file with a really huge line! +5'
+				print fname, 'is a 1-6 lined php file with a really huge line! +10'
 				test_taken = True
-				score += 5
+				score += 10
 
 			if SCAN_taintedfile(fname) == True:
 				print fname, 'is most likely a maliciously tainted file! -15'
