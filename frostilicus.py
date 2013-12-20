@@ -142,6 +142,18 @@ def SCAN_c99injector(fname):
 	f.close()
 	return False
 
+def SCAN_backdoors(fname):
+	"""
+		This looks for values commonly attributed to perl backdoors built into web shells like c99, r57 and WSO.
+	"""
+	f = open(fname, 'r')
+	s = mmap.mmap(f.fileno(), 0, access=mmap.ACCESS_READ)
+	if s.find('$back_connect') >= 0 or s.find('$datapipe_') >= 0 or s.find('port_bind_bd_pl') >=0:
+		f.close()
+		return True
+	f.close()
+	return False
+
 def SCAN_longlinephp(fname):
 	"""
 		This looks for .php files that are 2~6 lines long with a line that is longer than 700 Characters.
@@ -232,6 +244,11 @@ def main():
 				print fname, 'is most likely a c99-type PHP shell! +20'
 				test_taken = True
 				score += 20
+
+			if SCAN_backdoors(fname) == True:
+				print fname, 'has variables commonly used by backdoors in PHP shells! +5'
+				test_taken = True
+				score += 5
 
 			if SCAN_longlinephp(fname) == True:
 				print fname, 'is a short lined php file with a really huge line! +5'
