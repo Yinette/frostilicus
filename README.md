@@ -76,21 +76,23 @@ Some of these may already be installed.
 
 Install all these fun things first:
 `apt-get install libffi-dev build-essential python-virtualenv python-pip libpython2.7`
+
+
 (packages might be named different on non-debian based systems)
+
 
 now, goto where you cloned frostilicus and start the virtualenv.
 
-`$ virtualenv env` ("env" can be whatever you want to call it.)
-
-`$ . env/bin/activate`
-
+<pre>
+$ virtualenv env  #"env" can be whatever you want to call it.
+$ . env/bin/activate
+</pre>
 Now, inside the virtualenv:
-
-`pip install argparse` (this one might already be installed)
-
-`pip install cffi`
-
-`pip install butter`
+<pre>
+pip install argparse #this one might already be installed
+pip install cffi
+pip install butter
+</pre>
 
 Now once that's all done, you're ready to go.
 
