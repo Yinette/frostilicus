@@ -81,12 +81,15 @@ Install all these fun things first:
 now, goto where you cloned frostilicus and start the virtualenv.
 
 `$ virtualenv env` ("env" can be whatever you want to call it.)
+
 `$ . env/bin/activate`
 
 Now, inside the virtualenv:
 
 `pip install argparse` (this one might already be installed)
+
 `pip install cffi`
+
 `pip install butter`
 
 Now once that's all done, you're ready to go.
