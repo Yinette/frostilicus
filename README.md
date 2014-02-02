@@ -7,18 +7,22 @@ FROSTILICUS SAVIOUR OF WEB APPLICATIONS
 
 Written by: Yinette of Anchor Systems, NOC Team, BeardPod section. "Maintaining the Standard"
 
-HUGE THANKS TO: Da_Blitz/Jayc for the massive help with the 'right way' to write Python and for the awesome
-library which is attached to this program, 'butter'.
+HUGE THANKS TO: Da_Blitz/Jayc for the massive help with the basic teaching of how to write Python and for the awesome
+library which is used by this script.
 
 
 Frostilicus is no where near what i would call "complete" please be patient as I add more features and fix bugs.
-Please let me know if issues you do find!
+Please let me know of any issues you do find!
+
+Frostilicus is released under BSD License, so go nuts! (but tell me about what you're working on too)
 
 #### Requirements:
 
- - Linux kernel version 2.6.38+ (for fanotify support)
+ - Linux kernel version 2.6.38+ or 3.x+ (for fanotify support)
  - Python 2.7+
  - cffi python library (and libffi-dev/libffi-devel package)
+
+covered in depth in installation
 
 #### Intro
 
@@ -36,7 +40,7 @@ Will recursively find files modified in the last 24 hours and then run them thro
 
 ##### PASSIVE
 
-On supported systems will plug into the fanotify syscall and test files as they are modified.
+On supported systems will plug into the fanotify syscall and test files as they are modified. Requires butter.
 
 #### What Frostilicus looks for
 
@@ -55,6 +59,46 @@ It takes several things into account when tallying this score:
  - Looks for a string found in the Rodecap spam Trojan.
 
  - Other stuff that has not been added yet!
+
+#### INSTALL:
+
+Frostilicus runs best in a virtualenv, however it's perfectly fine to run this on a system as is.
+
+The prerequisites you will require on the system are:
+
+ - libcffi-dev
+ - python-virtualenv
+ - python-pip
+ - build-essential
+ - libpython2.7
+
+Some of these may already be installed.
+
+Install all these fun things first:
+`apt-get install libffi-dev build-essential python-virtualenv python-pip libpython2.7`
+(packages might be named different on non-debian based systems)
+
+now, goto where you cloned frostilicus and start the virtualenv.
+
+`$ virtualenv env` ("env" can be whatever you want to call it.)
+`$ . env/bin/activate`
+
+Now, inside the virtualenv:
+
+`pip install argparse` (this one might already be installed)
+`pip install cffi`
+`pip install butter`
+
+Now once that's all done, you're ready to go.
+
+`./frostilicus.py`
+
+##### Stand Alone
+
+Frostilicus can run stand alone without butter, however you'll need to modify the source a little.
+For stand alone, just remove the `import * from butter` in the top.
+
+I will eventually introduce a branch that will work by itself.
 
 #### USE:
 
