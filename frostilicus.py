@@ -15,6 +15,7 @@ parser.add_argument("directory", help="The directory to Scan.")
 parser.add_argument('-p','--passive', help="Enables Passive mode, waits for file changes/creations before scanning. Uses the FNOTIFY syscall", action="store_true") 
 parser.add_argument('-v','--verbose', help="Will run frostilicus verbosely.", action="store_true")
 parser.add_argument('-f','--freeze', help="Will chmod 000 files with a score of 10 or above", action="store_true")
+parser.add_argument('-d','--days', help="How many days to search for activity from, defaults to 1", default="1")
 args = parser.parse_args()
 
 def scan_files():
@@ -22,7 +23,7 @@ def scan_files():
 		Looks for files modified in the last 24 hours in a directory passed as an argument
 	"""
 	now=dt.datetime.now()
-	ago=now-dt.timedelta(days=1)
+	ago=now-dt.timedelta(days=int(arg.days))
 
 	matches = []
 	for root,dirs,files in os.walk(args.directory, followlinks=False, onerror=None):
