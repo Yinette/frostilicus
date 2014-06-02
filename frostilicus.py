@@ -23,7 +23,7 @@ def scan_files():
 		Looks for files modified in the last 24 hours in a directory passed as an argument
 	"""
 	now=dt.datetime.now()
-	ago=now-dt.timedelta(days=int(arg.days))
+	ago=now-dt.timedelta(days=int(args.days))
 
 	matches = []
 	for root,dirs,files in os.walk(args.directory, followlinks=False, onerror=None):
