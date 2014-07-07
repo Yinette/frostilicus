@@ -171,6 +171,20 @@ def SCAN_longlinephp(fname):
 			f.close()
 	return False
 
+def SCAN_nestedelf(fname):
+	"""
+		Looks for nested ELF binaries in .php files...  pretty good indicator of something amiss.
+	"""
+	f = open(fname, 'r')
+	s = mmap.mmap(f.fileno(), 0, access=mmap.ACCESS_READ)
+	if fname.endswith(".php"):
+		if s.find("\x7f\x45\x4c\x46\x02\x01\x01\x00\x00\x00\x00") >= 0:
+			f.close()
+			return True
+		f.close()
+		return False
+	return False
+
 #Regex is severely broken!
 def SCAN_taintedfile(fname):
 	"""
@@ -262,6 +276,11 @@ def main():
 				print fname, 'is most likely a maliciously tainted file! -15'
 				test_taken = True
 				score +=-15
+
+			if SCAN_nestedelf(fname) == True:
+				print fname, 'is a .php file with nested ELF Binary, INVESTIGATE! +15'
+				test_taken = True
+				score += 15
 
 			if test_taken:
 				if args.freeze and score >=10:
