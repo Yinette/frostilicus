@@ -178,7 +178,7 @@ def SCAN_nestedelf(fname):
 	f = open(fname, 'r')
 	s = mmap.mmap(f.fileno(), 0, access=mmap.ACCESS_READ)
 	if fname.endswith(".php"):
-		if s.find("\x7f\x45\x4c\x46\x02\x01\x01\x00\x00\x00\x00") >= 0:
+		if s.find("\\x7f\\x45\\x4c\\x46\\x02\\x01\\x01\\x00\\x00\\x00\\x00") >= 0:
 			f.close()
 			return True
 		f.close()
