@@ -190,7 +190,7 @@ def SCAN_phpinj(fname):
 		Looks for eval(base64_decode($_POST['<STRING>'])); at the top of files, used in nested PHP attacks on otherwise legit pages.
 	"""
 	f = open(fname, 'r')
-	s = mmap.mmap(f,fileno(), 0, access=mmap.ACCESS_READ)
+	s = mmap.mmap(f.fileno(), 0, access=mmap.ACCESS_READ)
 	if fname.endswith(".php"):
 		if s.find("eval(base64_decode($_POST") >= 0:
 			f.close()
