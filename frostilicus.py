@@ -185,6 +185,20 @@ def SCAN_nestedelf(fname):
 		return False
 	return False
 
+def SCAN_phpinj(fname):
+	"""
+		Looks for eval(base64_decode($_POST['<STRING>'])); at the top of files, used in nested PHP attacks on otherwise legit pages.
+	"""
+	f = open(fname, 'r')
+	s = mmap.mmap(f,fileno(), 0, access=mmap.ACCESS_READ)
+	if fname.endswith(".php"):
+		if s.find("eval(base64_decode($_POST") >= 0:
+			f.close()
+			return True
+		f.close
+		return False
+	return False
+
 #Regex is severely broken!
 def SCAN_taintedfile(fname):
 	"""
@@ -281,6 +295,11 @@ def main():
 				print fname, 'is a .php file with nested ELF Binary, INVESTIGATE! +15'
 				test_taken = True
 				score += 15
+
+			if SCAN_phpinj(fname) == True:
+				print fname, 'is a .php file with an injected eval(base64_decode($_POST string, TAINTED!'
+				test_taken = True
+				score += 5
 
 			if test_taken:
 				if args.freeze and score >=10:
