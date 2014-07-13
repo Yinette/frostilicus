@@ -320,7 +320,7 @@ def main():
 			if SCAN_i59spambot(fname) == True:
 				print fname, 'i59 spambot detected!'
 				test_taken = True
-				score +=-15
+				score +=15
 
 
 			if test_taken:
