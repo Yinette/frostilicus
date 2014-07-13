@@ -199,6 +199,22 @@ def SCAN_phpinj(fname):
 		return False
 	return False
 
+def SCAN_i59spambot(fname):
+	"""
+		Looks for the i59 spambots
+	"""
+	if not empty(fname):
+		f = open(fname, 'r')
+		s = mmap.mmap(f.fileno(), 0, access=mmap.ACCESS_READ)
+		if fname.endswith(".php"):
+			if s.find('\<?$i59="Euc<v#`5R1s?') >= 0 and s.find('$GLOBALS') >=0:
+				f.close()
+				return True
+			f.close()
+			return False
+	return False
+
+
 #Regex is severely broken!
 def SCAN_taintedfile(fname):
 	"""
@@ -300,6 +316,12 @@ def main():
 				print fname, 'is a .php file with an injected eval(base64_decode($_POST string, TAINTED!'
 				test_taken = True
 				score += 5
+
+			if SCAN_i59spambot(fname) == True:
+				print fname, 'i59 spambot detected!'
+				test_taken = True
+				score +=-15
+
 
 			if test_taken:
 				if args.freeze and score >=10:
