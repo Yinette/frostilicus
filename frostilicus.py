@@ -207,7 +207,7 @@ def SCAN_i59spambot(fname):
 		f = open(fname, 'r')
 		s = mmap.mmap(f.fileno(), 0, access=mmap.ACCESS_READ)
 		if fname.endswith(".php"):
-			if s.find('\<?$i59="Euc<v#`5R1s?') >= 0 and s.find('$GLOBALS') >=0:
+			if s.find('\<?$i59="Euc<v#`5R1s?') >=0:
 				f.close()
 				return True
 			f.close()
