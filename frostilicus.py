@@ -308,7 +308,7 @@ def main():
 				score +=-15
 
 			if SCAN_nestedelf(fname) == True:
-				print fname, 'Linux/Mayhem is a .php file with nested ELF Binary, INVESTIGATE! +15'
+				print fname, 'Linux/Mayhem Detected! Nested ELF library in .php script, INVESTIGATE! +15'
 				test_taken = True
 				score += 15
 
