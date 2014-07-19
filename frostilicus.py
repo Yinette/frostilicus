@@ -173,7 +173,7 @@ def SCAN_longlinephp(fname):
 
 def SCAN_nestedelf(fname):
 	"""
-		Looks for nested ELF binaries in .php files...  pretty good indicator of something amiss.
+		Looks for nested ELF binaries in .php files...  pretty good indicator of something amiss. Known as "Linux/Mayhem" July 2014.
 	"""
 	f = open(fname, 'r')
 	s = mmap.mmap(f.fileno(), 0, access=mmap.ACCESS_READ)
@@ -308,7 +308,7 @@ def main():
 				score +=-15
 
 			if SCAN_nestedelf(fname) == True:
-				print fname, 'is a .php file with nested ELF Binary, INVESTIGATE! +15'
+				print fname, 'Linux/Mayhem is a .php file with nested ELF Binary, INVESTIGATE! +15'
 				test_taken = True
 				score += 15
 
