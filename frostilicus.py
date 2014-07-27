@@ -215,7 +215,43 @@ def SCAN_i59spambot(fname):
 			return False
 	return False
 
+
+#Regex is severely broken!
+def SCAN_taintedfile(fname):
+	"""
+		This looks for .php files that are longer than 12 lines, and contain some known exploit keywords on a line exeeding 1000 Chr.
+		Basically this is searching for 'tainted' legitimate files.
+	"""
+	if fname.endswith(".php") and line_length(fname, 1000):
+			f = open(fname, 'r')
+			reg = re.compile(r'eval\(base64_decode|\\x65\\x76\\x61\\x6C\\x28|x62\\x61\\x73\\x65\\x36\\x34\\x5F\\x64\\x65\\x63\\x6F\\x64\\x65')
+			for i, line in enumerate(f):
+				pass
+			if i >=12:
+				match = reg.findall(line)
+				if match:
+					f.close()
+					return True
+			f.close()
+	return False
+
+
 def main():
+
+	#TODO:
+	#		- thread this shit?
+	#More Scans to add:
+	#		- Search for Common Strings in PHP Shells (c99, spider, anti-sec, etc.)
+	#		- Cascading search of strings of PHP obfuscation methods
+	#		- Common Javascript obfuscation
+	#		- PHP IRC bot strings?
+	#       - look for fsockopen in .php files, (determine if large legitimate use first!)
+	#		- Detect "class pBot" - not legit. If so, tough titties.
+	#		- $back_connect= +5
+	#		- $port_bind_bd_pl= +5
+	#		- $datapipe_c= +5
+	#		- $datapipe_pl= +5
+
 	while True:
 		if args.passive:
 			files = scan_pasv()
