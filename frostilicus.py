@@ -237,6 +237,13 @@ def SCAN_taintedfile(fname):
 
 
 def main():
+
+	class pretty:
+		HIGH = '\033[91m'
+		MED  = '\033[93m'
+		END  = '\033[0m'
+		FALP = '\033[92m'
+
 	while True:
 		if args.passive:
 			files = scan_pasv()
@@ -262,61 +269,61 @@ def main():
 			score = 0
 
 			if SCAN_b64withlen(fname) == True:
-				print fname, 'has a line containing base64_decode as well as a line over 700 characters! +5'
+				print pretty.MED + fname, 'has a line containing base64_decode as well as a line over 700 characters! +5' + pretty.END
 				test_taken = True
 				score += 5
 
 			if SCAN_gifwithphp(fname) == True:
-				print fname, 'has both gif and PHP file headers! +10'
+				print pretty.MED + fname, 'has both gif and PHP file headers! +10' + pretty.END
 				test_taken = True
 				score += 10
 
 			if SCAN_RodecapBot(fname) == True:
-				print fname, 'is most likely a Rodecap spambot! +10'
+				print pretty.HIGH + fname, 'is most likely a Rodecap spambot! +10' + pretty.END
 				test_taken = True
 				score += 10
 
 			if SCAN_c99injector(fname) == True:
-				print fname, 'is most likely a c99-type PHP shell! +20'
+				print pretty.HIGH + fname, 'is most likely a c99-type PHP shell! +20' + pretty.END
 				test_taken = True
 				score += 20
 
 			if SCAN_backdoors(fname) == True:
-				print fname, 'has variables commonly used by backdoors in PHP shells! +5'
+				print pretty.HIGH + fname, 'has variables commonly used by backdoors in PHP shells! +5' + pretty.END
 				test_taken = True
 				score += 5
 
 			if SCAN_longlinephp(fname) == True:
-				print fname, 'is a 1-6 lined php file with a really huge line! +10'
+				print pretty.MED + fname, 'is a 1-6 lined php file with a really huge line! +10' + pretty.END
 				test_taken = True
 				score += 10
 
 			if SCAN_taintedfile(fname) == True:
-				print fname, 'is most likely a maliciously tainted file! -15'
+				print pretty.FALP + fname, 'is most likely a maliciously tainted file! -15' + pretty.END
 				test_taken = True
 				score +=-15
 
 			if SCAN_nestedelf(fname) == True:
-				print fname, 'Linux/Mayhem Detected! Nested ELF library in .php script, INVESTIGATE! +15'
+				print pretty.HIGH + fname, 'Linux/Mayhem Detected! Nested ELF library in .php script, INVESTIGATE! +15' + pretty.END
 				test_taken = True
 				score += 15
 
 			if SCAN_phpinj(fname) == True:
-				print fname, 'is a .php file with an injected eval(base64_decode($_POST string, TAINTED!'
+				print pretty.MED + fname, 'is a .php file with an injected eval(base64_decode($_POST string, TAINTED!' + pretty.END
 				test_taken = True
 				score += 5
 
 			if SCAN_i59spambot(fname) == True:
-				print fname, 'i59 spambot detected!'
+				print pretty.HIGH + fname, 'i59 spambot detected!' + pretty.END
 				test_taken = True
-				score +=15
+				score += 15
 
 
 			if test_taken:
 				if args.freeze and score >=10:
-					print "!!!!"
+					print pretty.HIGH + "!!!!"
 					print "%s has high malicious confidence - frozen!" % (fname)
-					print "!!!!"
+					print "!!!!" + pretty.END
 					os.chmod(fname, 0000)
 				print "%s has score %d" % (fname, score)
 				print '==='
