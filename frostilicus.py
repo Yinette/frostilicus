@@ -251,7 +251,7 @@ def main():
 				continue
 			if os.path.islink(fname):
 				continue
-			if fname is "simplepie.php" and hash_get is 'd1c8a277f0cc128b5610db721c70eabd':
+			if hash_get == 'd1c8a277f0cc128b5610db721c70eabd': #simplepie.php has some strings that frostilicus finds.
 				continue
 			st=os.lstat(fname)
 			if st.st_size / 1024 / 1024 >= 3:
