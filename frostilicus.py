@@ -237,21 +237,6 @@ def SCAN_taintedfile(fname):
 
 
 def main():
-
-	#TODO:
-	#		- thread this shit?
-	#More Scans to add:
-	#		- Search for Common Strings in PHP Shells (c99, spider, anti-sec, etc.)
-	#		- Cascading search of strings of PHP obfuscation methods
-	#		- Common Javascript obfuscation
-	#		- PHP IRC bot strings?
-	#       - look for fsockopen in .php files, (determine if large legitimate use first!)
-	#		- Detect "class pBot" - not legit. If so, tough titties.
-	#		- $back_connect= +5
-	#		- $port_bind_bd_pl= +5
-	#		- $datapipe_c= +5
-	#		- $datapipe_pl= +5
-
 	while True:
 		if args.passive:
 			files = scan_pasv()
