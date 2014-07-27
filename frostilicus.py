@@ -7,6 +7,7 @@ import mmap
 import time
 import re
 import argparse
+import hashlib
 from time import sleep
 from butter.fanotify import *
 
@@ -222,11 +223,14 @@ def main():
 			files = scan_files()
 
 		for fname in files:
+			hash_get = hashlib.md5(open(fname).read()).hexdigest()
 			if not os.path.isfile(fname):
 				continue
 			if "/cache/" in fname:
 				continue
 			if os.path.islink(fname):
+				continue
+			if fname is "simplepie.php" and hash_get is 'd1c8a277f0cc128b5610db721c70eabd':
 				continue
 			st=os.lstat(fname)
 			if st.st_size / 1024 / 1024 >= 3:
