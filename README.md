@@ -7,7 +7,7 @@ FROSTILICUS SAVIOUR OF WEB APPLICATIONS
 
 Written by: Yinette of Anchor Systems, NOC Team, BeardPod section. "Maintaining the Standard"
 
-HUGE THANKS TO: Da_Blitz/Jayc for the massive help with the basic teaching of how to write Python and for the awesome
+HUGE THANKS TO: Da_Blitz for the massive help with the basic teaching of how to write Python and for the awesome
 library which is used by this script.
 
 
