@@ -3,7 +3,7 @@ FROSTILICUS SAVIOUR OF WEB APPLICATIONS
 
 [Namesake] (http://en.wikipedia.org/wiki/Lisa_the_Simpson)
 
-![Frostilicus!](http://yinette.beta.anchortrove.com/Xsp6T.jpg)
+![Frostilicus!](https://yinette.bucket.nchr.io/Xsp6T.jpg)
 
 Written by: Yinette of Anchor Systems, NOC Team, BeardPod section. "Maintaining the Standard"
 
