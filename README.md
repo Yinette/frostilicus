@@ -1,5 +1,5 @@
 # NOTE
-Hi, Yin here. I wrote this a while ago now, and it is absolutely no where near perfect, unfortunately i was not able to continue work on this project beyond minor fixes or tweaks when I had a moment of time to spare and I had the spoons to commit to it.
+Hi, Yin here. I wrote this a while ago now, and it is absolutely no where near perfect, unfortunately I was not able to continue work on this project beyond minor fixes or tweaks when I had a moment of time to spare and I had the spoons to commit to it.
 
 A lot of stuff has changed in the 5 or so years this thing has been around. PHP Malware on the upper-end of scale has become far more difficult to detect using what frostilicus does. Most of the time you cannot even find "base64_decode" anywhere but in legit places these days, or just really old or primitive webshells.
 
