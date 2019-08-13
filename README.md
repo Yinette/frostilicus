@@ -1,15 +1,25 @@
-FROSTILICUS SAVIOUR OF WEB APPLICATIONS
+FROSTILICUS
 ---------------------------------------
 
-[Namesake] (http://en.wikipedia.org/wiki/Lisa_the_Simpson)
+# NOTE
+Hi, Yin here. I wrote this a while ago now, and it is absolutely no where near perfect, unfortunately i was not able to continue work on this project beyond minor fixes or tweaks when I had a moment of time to spare and I had the spoons to commit to it.
 
-![Frostilicus!](https://yinette.bucket.nchr.io/Xsp6T.jpg)
+A lot of stuff has changed in the 5 or so years this thing has been around. PHP Malware on the upper-end of scale has become far more difficult to detect using what frostilicus does. Most of the time you cannot even find "base64_decode" anywhere but in legit places these days, or just really old or primitive webshells.
 
-Written by: Yinette of Anchor Systems, NOC Team, BeardPod section. "Maintaining the Standard"
+Really the whole landscape has changed in a lot of ways.
+
+If you've come across this tool, thanks for taking a look! I would strongly recommend you take a peek at some alternatives I have come across since writing this ol' thing.
+
+  - Clamd now does FANOTIFY! (And not just mountpoint patrolling)
+  - Maldet, Linux Malware Detect - https://www.rfxn.com/projects/linux-malware-detect/
+    - Based on ClamAV, but has its own ruleset and detection databases, a little more hosting friendly than ClamAV for large deployments. (i.e. Shared Hosting, cPanel)
+
+Thanks for your interest and I wish you best of luck keeping your servers safe!
+
+Written by: Yinette of Anchor Systems
 
 HUGE THANKS TO: Da_Blitz for the massive help with the basic teaching of how to write Python and for the awesome
 library which is used by this script.
-
 
 Frostilicus is no where near what i would call "complete" please be patient as I add more features and fix bugs.
 Please let me know of any issues you do find!
