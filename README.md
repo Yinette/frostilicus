@@ -1,6 +1,3 @@
-FROSTILICUS
----------------------------------------
-
 # NOTE
 Hi, Yin here. I wrote this a while ago now, and it is absolutely no where near perfect, unfortunately i was not able to continue work on this project beyond minor fixes or tweaks when I had a moment of time to spare and I had the spoons to commit to it.
 
@@ -15,6 +12,11 @@ If you've come across this tool, thanks for taking a look! I would strongly reco
     - Based on ClamAV, but has its own ruleset and detection databases, a little more hosting friendly than ClamAV for large deployments. (i.e. Shared Hosting, cPanel)
 
 Thanks for your interest and I wish you best of luck keeping your servers safe!
+
+---------------------------------------
+
+FROSTILICUS
+---------------------------------------
 
 Written by: Yinette of Anchor Systems
 
